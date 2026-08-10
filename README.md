@@ -1,6 +1,6 @@
 # Ray Tracer em Python
 
-Um ray tracer construído do zero, sem bibliotecas gráficas — só matemática e Pillow. :)
+Um ray tracer construído do zero, sem bibliotecas gráficas, só matemática e Pillow. :)
 ## O que é isso
 
 o ray tracing é a técnica que a Pixar, por exemplo, usa: você dispara "raios" (linhas) da câmera para cada pixel da tela e simula fisicamente como a luz interage com os objetos. O resultado sai renderizado, sem GPU, direto do CPU.
