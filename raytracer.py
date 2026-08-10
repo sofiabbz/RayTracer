@@ -1,6 +1,6 @@
 """
-Ray Tracer - Versao 1
-Renderiza uma esfera colorida sobre um fundo gradiente (ceu).
+Ray Tracer - V1
+Renderiza uma esfera colorida sobre um fundo azulzinho.
 """
 
 from PIL import Image
@@ -10,7 +10,7 @@ import math
 LARGURA = 400
 ALTURA = 300
 
-# A cena: uma esfera vermelha flutuando na frente da camera
+# Uma esfera vermelha flutuando na frente da camera
 ESFERA_CENTRO = (0, 0, -3)
 ESFERA_RAIO = 1.0
 ESFERA_COR = (0.9, 0.3, 0.3)
@@ -31,10 +31,10 @@ def normaliza(v):
 
 def intersecta_esfera(origem, direcao, centro, raio):
     """
-    Verifica se o raio (origem + t * direcao) atinge a esfera.
-    Retorna a distancia t se atingir, ou None caso contrario.
+    OBS: Verifica se o raio (origem + t * direcao) atinge a esfera.
+    Retorna a distancia t se atingir, ou None caso não atinja.
 
-    Matematica: a interseccao raio-esfera vira uma equacao quadratica.
+    OBS - Matematica: a interseccao raio-esfera vira uma equacao quadratica.
     Se o discriminante for negativo, o raio passa longe da esfera.
     """
     oc = subtrai(origem, centro)
@@ -54,19 +54,19 @@ def cor_do_pixel(x, y):
     Dispara um raio da camera passando pelo pixel (x, y)
     e retorna a cor RGB que aquele raio "ve".
     """
-    # Converte pixel para coordenada da cena (aspect-corrigida)
+    # Converte pixel (x, y) para coordenadas de viewport (u, v)
     u = (x - LARGURA / 2) / ALTURA
     v = -(y - ALTURA / 2) / ALTURA
 
     origem = (0, 0, 0)
     direcao = normaliza((u, v, -1))
 
-    # O raio atinge a esfera?
+    # Se o raio atinge a esfera, pinta o pixel com a cor da esfera
     t = intersecta_esfera(origem, direcao, ESFERA_CENTRO, ESFERA_RAIO)
     if t is not None:
         return ESFERA_COR
 
-    # Nao atingiu: pinta o ceu com um gradiente vertical suave
+    # Se não atingir a esfera, pinta o fundo com um gradiente de céu mais claro
     fator = 0.5 * (direcao[1] + 1)
     return (1 - fator * 0.5, 1 - fator * 0.3, 1)
 
@@ -89,7 +89,7 @@ def renderiza():
 
     imagem.putdata(pixels)
     imagem.save("output/v1_esfera.png")
-    print("Pronto! Imagem salva em output/v1_esfera.png")
+    print("Pronto! A imagem foi salva em output/v1_esfera.png")
 
 
 if __name__ == "__main__":
