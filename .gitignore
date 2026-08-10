@@ -1,0 +1,22 @@
+# Ambiente virtual
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# VS Code
+.vscode/
+
+# Imagens geradas durante desenvolvimento
+output/*.png
+
+# Mas manter os prints "oficiais" de cada versão pro README
+!docs/*.png
+
+# OS
+.DS_Store
+Thumbs.db
